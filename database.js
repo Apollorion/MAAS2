@@ -92,7 +92,7 @@ let getSol = (sol, callback) => {
             else
             {
                 console.log("FOUND SOL IN DB");
-                callback({status: 200, ...results[0]});
+                callback({status: 200, ...results[0], unitOfMeasure: 'Celsius', TZ_Data: 'America/Port_of_Spain'});
             }
         });
     }
