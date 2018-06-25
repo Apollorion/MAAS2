@@ -1,5 +1,3 @@
-// For development/testing purposes
-
 let database = require('./database');
 
 exports.handler = function(event, context, callback) {
