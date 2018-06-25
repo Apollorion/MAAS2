@@ -50,6 +50,27 @@ let getSpecificSolFromNasa = (solToFind, callback) => {
 };
 
 let insertSol = (solToInsert, callback) => {
+
+    if(solToInsert.min_temp === '--')
+    {
+        solToInsert.min_temp = undefined;
+    }
+
+    if(solToInsert.max_temp === '--')
+    {
+        solToInsert.max_temp = undefined;
+    }
+
+    if(solToInsert.min_gts_temp === '--')
+    {
+        solToInsert.min_gts_temp = undefined;
+    }
+
+    if(solToInsert.max_gts_temp === '--')
+    {
+        solToInsert.max_gts_temp = undefined;
+    }
+
     connection.query(
         'INSERT INTO MAAS SET ?',
         {
