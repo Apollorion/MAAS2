@@ -12,7 +12,7 @@ exports.handler = async function(event, context, callback) {
     return callback(null, {
         "isBase64Encoded": false,
         "statusCode": requestedSol["status"],
-        "headers": { "Content-Type": "application/json; charset=utf-8" },
+        "headers": { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*" },
         "body": JSON.stringify(requestedSol)
     });
 };
