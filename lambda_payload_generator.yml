@@ -1,0 +1,69 @@
+---
+- name: "Build Lambda Payload"
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: "Clean build directory"
+      file:
+        state: absent
+        path: compiled
+
+    - name: "Create build directory"
+      file:
+        state: directory
+        path: compiled
+
+    - name: "Create scraper build directory"
+      file:
+        state: directory
+        path: compiled/scraper
+
+    - name: "Create api build directory"
+      file:
+        state: directory
+        path: compiled/api
+
+    - name: "Copy scraper lambda files"
+      command: cp -r lambda/scraper/ compiled/scraper
+
+    - name: "Copy api lambda files"
+      command: cp -r lambda/api/ compiled/api
+
+    - name: "Install python modules required for this script"
+      pip:
+        name: "docker"
+
+    - name: "Build Scraper Dependencies"
+      docker_container:
+        name: lambda_builder
+        image: lambci/lambda:build-nodejs12.x
+        state: started
+        restart: yes
+        detach: no
+        volumes:
+          - "{{playbook_dir}}/compiled/scraper:/var/task"
+        command: "npm install"
+
+    - name: "Build api Dependencies"
+      docker_container:
+        name: lambda_builder
+        image: lambci/lambda:build-nodejs12.x
+        state: started
+        restart: yes
+        detach: no
+        volumes:
+          - "{{playbook_dir}}/compiled/api:/var/task"
+        command: "npm install"
+
+    - name: "Create scraper lambda payload"
+      archive:
+        path: "{{ playbook_dir }}/compiled/scraper/"
+        dest: "{{ playbook_dir }}/compiled/scraper_payload.zip"
+        format: zip
+
+    - name: "Create api lambda payload"
+      archive:
+        path: "{{ playbook_dir }}/compiled/api/"
+        dest: "{{ playbook_dir }}/compiled/api_payload.zip"
+        format: zip
