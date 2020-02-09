@@ -1,0 +1,15 @@
+{
+  "name": "maas2_scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "apollorion",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "mysql": "^2.18.1"
+  }
+}
