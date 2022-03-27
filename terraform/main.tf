@@ -1,5 +1,5 @@
 variable aws_region {
-  default = "us-east-2"
+  default = "us-east-1"
   type    = string
 }
 
@@ -40,7 +40,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     key = "maas2.tfstate"
-    bucket = "apollorion-tfstates"
-    region = "us-east-2"
+    bucket = "apollorion-us-east-1-tfstates"
+    region = "us-east-1"
   }
 }
