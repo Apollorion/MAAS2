@@ -9,6 +9,14 @@ https://api.maas2.apollorion.com/ - The official MAAS2 endpoint.
 `/` - Gets the latest from the API.  
 `/$sol` - Gets a specific sol.
 
+#### Example
+
+https://api.maas2.apollorion.com/ - Gets the latest sol.
+https://api.maas2.apollorion.com/3322 - Gets sol 3322.
+
+Some sol's have incomplete data, day 2 for example does not have data which will return a `404` http status.
+`{"status": "sol not found"}`
+
 *Ignore content type of all requests, this is now hosted in github pages which sets the content type incorrectly.*
 You can safely assume all content type is `application/json`.
 
