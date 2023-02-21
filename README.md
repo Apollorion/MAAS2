@@ -1,10 +1,9 @@
 # MAAS2
 
-Maas2 is a RESTFUL API written in NodeJS for AWS Lambda for caching/pulling mars weather data from NASA.
+Maas2 is a stateless api for MAAS. Its a simple reorganization of the data available officially by nasa [here](http://cab.inta-csic.es/rems//wp-content/plugins/marsweather-widget/api.php).
 
 ### URLs
-https://api.maas2.apollorion.com/ - The official MAAS2 endpoint.  
-https://maas2.apollorion.com/ - The official MAAS2 SwaggerUI documentation.
+https://api.maas2.apollorion.com/ - The official MAAS2 endpoint.
 
 ### Params
 `/` - Gets the latest from the API.  
@@ -12,11 +11,7 @@ https://maas2.apollorion.com/ - The official MAAS2 SwaggerUI documentation.
 
 
 ## Building
+To build, just download the offical MAAS api json to this repo as `maas2.json` and run `main.py`.
 
-Basically, you need to build the lambda payloads with `lambda_payload_generator.yml` (requires docker) and then apply the terraform in the `terraform` directory.
-  
-`seed_db.sql` will create the database scheme / some initial inserts for you.
-
-```shell script
-ansible-playbook lambda_payload_generator.yml && cd terraform && terraform apply
-```
+1. `curl http://cab.inta-csic.es/rems//wp-content/plugins/marsweather-widget/api.php > maas2.json`
+2. `python main.py`
