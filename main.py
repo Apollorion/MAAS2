@@ -20,7 +20,7 @@ for sol in data["soles"]:
     f.write(json.dumps(sol))
     f.close()
 
-f = open(f"./dist/{highest_sol}", "w")
+f = open(f"./dist/index.html", "w")
 f.write(json.dumps(highest_sol_data))
 f.close()
 
