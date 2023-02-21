@@ -11,7 +11,7 @@ https://api.maas2.apollorion.com/ - The official MAAS2 endpoint.
 
 #### Example
 
-https://api.maas2.apollorion.com/ - Gets the latest sol.
+https://api.maas2.apollorion.com/ - Gets the latest sol.  
 https://api.maas2.apollorion.com/3322 - Gets sol 3322.
 
 Some sol's have incomplete data, day 2 for example does not have data which will return a `404` http status.
