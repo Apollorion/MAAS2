@@ -9,6 +9,8 @@ https://api.maas2.apollorion.com/ - The official MAAS2 endpoint.
 `/` - Gets the latest from the API.  
 `/$sol` - Gets a specific sol.
 
+*Ignore content type of all requests, this is now hosted in github pages which sets the content type incorrectly.*
+You can safely assume all content type is `application/json`.
 
 ## Building
 To build, just download the offical MAAS api json to this repo as `maas2.json` and run `main.py`.
